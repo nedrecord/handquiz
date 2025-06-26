@@ -1,7 +1,8 @@
 {
   "name": "Poker Hand Quiz",
   "short_name": "Hand Quiz",
-  "start_url": "poker_quiz.html",
+  "start_url": "./",
+  "scope": "./", 
   "display": "standalone",
   "background_color": "#222222",
   "theme_color": "#222222",

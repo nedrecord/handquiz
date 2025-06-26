@@ -33,4 +33,64 @@ const DECK = [
   { code:'12', hand:'Full House 5 over Aces<br>Full House 4s over 7s' },
   { code:'13', hand:'Full House 5 over Aces<br>Full House 4s over 7s' },
   { code:'14', hand:'Full House 5 over Aces<br>Full House 4s over 7s' },
-  { code:'21', hand:'Two pa
+  { code:'21', hand:'Two pair Aces and 5s<br>Two pair 7s and 4s' },
+  { code:'22', hand:'Two pair Aces and 5s<br>Full House 7s over 4s' },
+  { code:'23', hand:'Two pair Aces and 5s<br>Full House 7s over 4s' },
+  { code:'24', hand:'Two pair Aces and 5s<br>Two pair 7s and 4s' },
+  { code:'31', hand:'Two pair Aces and 4s<br>Three 7s' },
+  { code:'32', hand:'Two pair Aces and 4s<br>Four 7s' },
+  { code:'33', hand:'Two pair Aces and 4s<br>Four 7s' },
+  { code:'34', hand:'Two pair Aces and 4s<br>Two pair 7s and 4s' },
+  { code:'41', hand:'Two pair Aces and 4s<br>Three 7s' },
+  { code:'42', hand:'Two pair Aces and 4s<br>Three 7s' },
+  { code:'43', hand:'Two pair Aces and 4s<br>Two pair 7s and 4s' },
+  { code:'44', hand:'Two pair Aces and 4s<br>Pair of 4s' }
+];
+
+/* === 2. STATE + HELPERS ============================================ */
+let stack = [...DECK];        // cards not yet shown in current cycle
+let showingBack = false;      // false = showing Code, true = showing Hand
+const cardEl = document.getElementById('card');
+const nextEl = document.getElementById('next');
+
+function drawRandom() {
+  if (stack.length === 0) stack = [...DECK];         // reshuffle after all seen
+  const idx = Math.floor(Math.random() * stack.length);
+  return stack.splice(idx,1)[0];
+}
+let current = drawRandom();
+
+/* === 3. RENDER FUNCTIONS =========================================== */
+function showFront(){
+  showingBack = false;
+  cardEl.classList.remove('back');
+  cardEl.innerHTML = current.code;
+}
+function showBack(){
+  showingBack = true;
+  cardEl.classList.add('back');
+  cardEl.innerHTML = current.hand;
+}
+
+/* === 4. EVENT HANDLERS ============================================= */
+cardEl.addEventListener('click', () => {
+  showingBack ? showFront() : showBack();
+});
+nextEl.addEventListener('click', () => {
+  current = drawRandom();
+  showFront();
+});
+
+/* === 5. INITIAL DRAW =============================================== */
+showFront();
+</script>
+
+<!-- ② register a minimal service-worker so the page can install offline -->
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
+</script>
+
+</body>
+</html>

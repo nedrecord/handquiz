@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Poker-Hand Quiz</title>
+
+<!-- ① tell the browser this page has a PWA manifest -->
+<link rel="manifest" href="manifest.json">
+
+<style>
+  /* --- basic styling --- */
+  html,body{margin:0;height:100%;font-family:system-ui,Segoe UI,Helvetica,Arial,sans-serif;
+            display:flex;flex-direction:column;justify-content:center;align-items:center;
+            background:#222;color:#eee}
+  #card{background:#333;border:2px solid #555;border-radius:8px;padding:40px 60px;
+        font-size:1.8rem;text-align:center;cursor:pointer;user-select:none;
+        min-width:220px;max-width:90%;transition:background .2s}
+  #card.back{background:#444}
+  #next{margin-top:28px;padding:10px 32px;border:none;border-radius:6px;
+        background:#4caf50;font-size:1rem;color:#fff;cursor:pointer}
+  #next:active{transform:scale(.97)}
+</style>
+</head>
+<body>
+
+<div id="card">Click to reveal</div>
+<button id="next">Next</button>
+
+<script>
+/* === 1. YOUR DATA =================================================== */
+const DECK = [
+  { code:'11', hand:'Full House 5 over Aces<br>Two pair 7s and 4s' },
+  { code:'12', hand:'Full House 5 over Aces<br>Full House 4s over 7s' },
+  { code:'13', hand:'Full House 5 over Aces<br>Full House 4s over 7s' },
+  { code:'14', hand:'Full House 5 over Aces<br>Full House 4s over 7s' },
+  { code:'21', hand:'Two pa

@@ -1,6 +1,6 @@
 {
-  "name": "Poker Hand Quiz",
-  "short_name": "Hand Quiz",
+  "name": "See What I See",
+  "short_name": "See What I See",
   "start_url": "index.html",
   "scope": "./", 
   "display": "standalone",
